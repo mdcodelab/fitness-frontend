@@ -1,0 +1,81 @@
+
+.home {
+    /* Full viewport height container */
+    height: 100vh;
+}
+
+/* Main inner container used by Home.js */
+.container {
+    position: relative;
+    height: calc(100vh - 5rem);
+}
+
+.carousel {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* remove image urls from CSS (we'll set backgrounds from JSX/public) */
+.carousel > .item,
+.carusel > div {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.03); /* subtle zoom */
+    animation: fade 16s infinite ease-in-out;
+}
+
+
+/* Content overlay (text and button) */
+.content {
+    position: relative;
+    z-index: 2; /* above carousel and overlay */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 18vh 20px 0 20px; /* push content down from top */
+    color: #fff;
+    text-align: left;
+}
+
+.content h1 {
+    font-size: 3rem;
+    line-height: 1.05;
+    margin: 0 0 0.6rem 0;
+    text-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+.content p {
+    font-size: 1.05rem;
+    max-width: 60ch;
+    margin-bottom: 1.25rem;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 4px 18px rgba(0,0,0,0.45);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .content h1 { font-size: 2.25rem; }
+    .content p { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+    .content { padding-top: 14vh; }
+    .content h1 { font-size: 1.6rem; }
+    .content p { font-size: 0.95rem; max-width: 36ch; }
+    .btn { padding: 0.6rem 1rem; }
+}
+
+/* Ensure the first slide is visible immediately (we set its background from JSX) */
+.item-1 {
+    opacity: 1 !important;
+    animation: none !important;
+    z-index: 0;
+}
+
