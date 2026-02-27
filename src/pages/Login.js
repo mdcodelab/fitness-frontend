@@ -17,11 +17,12 @@ function Login() {
           <input id="password" type="password" placeholder="Enter your password" required />
         </div>
 
-        <button type="submit" className="btn">Login</button>
+        <button type="submit" className="btn" style={{marginTop: "1rem"}}>Login</button>
         <p className="comment">
           Don't have an account? <Link to="/register" className="comment">
           Register here.</Link>
         </p>
+        <p></p>
       </form>
     </section>
   );
