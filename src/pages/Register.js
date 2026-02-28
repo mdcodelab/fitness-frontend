@@ -69,6 +69,8 @@ function Register() {
           placeholder="Enter your password" required />
         </div>
 
+        {error && <p className="error-message">{error}</p>}
+
         <button type="submit" className="btn" style={{marginTop: "1rem"}}>Register</button>
         <p className="comment">
           Already have an account? <Link to="/login" className="comment">Login here</Link>
