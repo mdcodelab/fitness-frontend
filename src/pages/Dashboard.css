@@ -11,13 +11,30 @@
     border-bottom: 2px solid #fff;
 }
 
+.dashboard .logo {
+    display: flex;
+    align-items: center;
+}
+
 .dashboard .logo h2 {
     color: #fff;
     font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.dashboard .logo img {
+    height: 8rem;
+    width: 8rem;
 }
 
 .buttons {
     display: flex;
+    align-items: center;
     gap: 1rem;
+}
+
+.buttons h2 {
+    color: #fff;
+    font-size: 1rem;
 }
 

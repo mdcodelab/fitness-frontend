@@ -10,8 +10,30 @@ function Dashboard() {
   const [userActivities, setUserActivities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const[firstName, setFirstName] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:4000/api-gateway/me",
+          { withCredentials: true }
+        );
+        if(res.data && res.data.first_name) {
+          setFirstName(res.data.first_name);
+        }
+        setFirstName("Guest");
+      } catch (err) {
+        console.error("Failed to fetch user info:", err.response?.data || err);
+      }
+
+    };
+    fetchUserName();
+
+  },);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,9 +82,10 @@ function Dashboard() {
       <header>
         <div className="logo">
           <h2>Pulse</h2>
+          <img src="/assets/logo.png" alt="Pulse Logo"></img>
         </div>
         <div className="buttons">
-          <h2>Hello, User!</h2>
+          <h2>Hello, {firstName}!</h2>
           <button className="btn" onClick={handleLogout}>
             Logout
           </button>
