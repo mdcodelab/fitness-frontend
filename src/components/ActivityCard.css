@@ -1,26 +1,31 @@
 .activity-card {
-  background: white;
+  background: #fff;
   border-radius: 4px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border: 2px solid red;
-  width: 10rem;
-  cursor: pointer;
+  width: 16rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
 }
 
-.activity-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.activity-card h3 {
+  font-size: 1.5rem;
 }
 
-.activity-name {
-  margin: 8px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+.activity-card p {
+  font-size: 1rem;
+  color: black;
 }
 
-.activity-description {
-  font-size: 0.9rem;
-  color: #666;
-}
+.icon {
+  font-size: 1.2rem;
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+} 

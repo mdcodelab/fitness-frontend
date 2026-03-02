@@ -53,6 +53,7 @@ header {
 .available-activities h2, .user-activities h2 {
     text-align: center;
     margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .available-activities .activity-grid {
