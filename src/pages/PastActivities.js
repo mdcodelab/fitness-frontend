@@ -13,12 +13,12 @@ function PastActivities() {
 
   // Activities state
   const [userActivities, setUserActivities] = useState([]);
-  const [activitiesLoading, setActivitiesLoading] = useState(true);
+  const [activitiesLoading, setActivitiesLoading] = useState(false);
   const [activitiesError, setActivitiesError] = useState("");
 
   // Recommendations state
   const [reco, setReco] = useState([]);
-  const [recoLoading, setRecoLoading] = useState(true);
+  const [recoLoading, setRecoLoading] = useState(false);
   const [recoError, setRecoError] = useState("");
 
   /* =========================
@@ -56,10 +56,10 @@ function PastActivities() {
   ========================== */
   useEffect(() => {
     if (!user) return;
+    setRecoLoading(true);
 
     const fetchReco = async () => {
       try {
-        setRecoLoading(true);
 
         const result = await axios.get(
           "http://localhost:4000/api-gateway/recom",
@@ -67,6 +67,7 @@ function PastActivities() {
         );
 
         setReco(result.data);
+        setRecoLoading(false)
       } catch (error) {
         console.error(
           "Fetch reco error:",
@@ -80,6 +81,30 @@ function PastActivities() {
 
     fetchReco();
   }, [user]);
+
+// =========================
+  //    DELETE RECOMMENDATIONS
+  // ==========================
+
+  const deleteReco = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this recommendation?");
+    if (!confirmed) return;
+    try {
+      await axios.delete(
+        `http://localhost:4000/api-gateway/delete-recom/${id}`,
+        { withCredentials: true }
+      );
+      setReco(reco.filter((rec) => rec.id !== id));
+      window.alert("Recommendation deleted successfully!");
+    } catch (error) {
+      console.error(
+        "Delete reco error:",
+        window.alert("Failed to delete recommendation"),
+        error.response?.data || error
+      );
+    }
+  };
+  
 
   const logout = () => {
     handleLogout();
@@ -113,7 +138,7 @@ function PastActivities() {
         )}
 
         {activitiesLoading ? (
-          <p>Loading...</p>
+          <p style={{ textAlign: "center", color: "red" }}>Loading...</p>
         ) : userActivities.length > 0 ? (
           <div className="past-activities-grid">
             {userActivities.map((activity) => (
@@ -137,7 +162,7 @@ function PastActivities() {
           )}
 
           {recoLoading ? (
-            <p>Loading...</p>
+            <p style={{ textAlign: "center", color: "red" }}>Loading...</p>
           ) : reco.length > 0 ? (
             reco.map((rec) => (
               <div className="reco" key={rec.id}>
@@ -147,7 +172,7 @@ function PastActivities() {
                     ? new Date(rec.recommendedAt).toLocaleDateString()
                     : ""}
                 </p>
-                <FaRegTrashAlt className="icon" />
+                <FaRegTrashAlt className="icon" onClick={() => deleteReco(rec.id)}/>
               </div>
             ))
           ) : (
