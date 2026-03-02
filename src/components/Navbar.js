@@ -6,6 +6,7 @@ function Navbar() {
   return (
     <nav>
       <div className="logo">
+        <img src="/assets/logo.png" alt="Pulse Logo"></img>
         <h2>Pulse</h2>
       </div>
 

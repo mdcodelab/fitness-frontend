@@ -4,6 +4,7 @@ import ActivityTypeCard from "../components/ActivityTypeCard";
 import ActivityCard from "../components/ActivityCard";
 import "./Dashboard.css";
 import axios from "axios";
+import { useUser } from "../context";
 
 function Dashboard() {
   const [availableActivities, setAvailableActivities] = useState([]);
@@ -11,28 +12,10 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const[firstName, setFirstName] = useState("");
+  const { user } = useUser();
+  console.log(user);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchUserName = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:4000/api-gateway/me",
-          { withCredentials: true }
-        );
-        if(res.data && res.data.first_name) {
-          setFirstName(res.data.first_name);
-        }
-        setFirstName("Guest");
-      } catch (err) {
-        console.error("Failed to fetch user info:", err.response?.data || err);
-      }
-
-    };
-    fetchUserName();
-
-  },);
 
 
   useEffect(() => {
@@ -81,11 +64,11 @@ function Dashboard() {
     <section className="dashboard">
       <header>
         <div className="logo">
-          <h2>Pulse</h2>
           <img src="/assets/logo.png" alt="Pulse Logo"></img>
+          <h2>Pulse</h2>
         </div>
         <div className="buttons">
-          <h2>Hello, {firstName}!</h2>
+          <h2>Hello, {user?.first_name || "Guest"}!</h2>
           <button className="btn" onClick={handleLogout}>
             Logout
           </button>

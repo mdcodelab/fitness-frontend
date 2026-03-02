@@ -8,6 +8,23 @@ nav {
     height: 4rem;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 3rem;
+    width: 3rem;
+}
+
+.logo h2 {
+    margin-top: -1rem;
+    cursor: pointer;
+}
+
 .buttons {
     display: flex;
     gap: 0.5rem;
