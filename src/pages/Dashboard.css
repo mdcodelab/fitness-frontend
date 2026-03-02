@@ -2,7 +2,7 @@
     background-color: #333;
 }
 
-.dashboard header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,20 +11,20 @@
     border-bottom: 2px solid #fff;
 }
 
-.dashboard .logo {
+.logo {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.dashboard .logo h2 {
+.logo h2 {
     color: #fff;
     font-size: 1.5rem;
     margin-top: -1rem;
     cursor: pointer;
 }
 
-.dashboard .logo img {
+.logo img {
     height: 3rem;
     width: 4rem;
 }
@@ -44,7 +44,6 @@
     display: flex;
     gap: 1rem;
     padding: 1rem;
-    border: 2px solid red;
 }
 
 .available-activities {
@@ -65,6 +64,11 @@
 .user-activities {
     flex: 1;
     border: 2px solid blue;
+}
+
+.user-activities p {
+    text-align: center;
+    color: #fff;
 }
 
 

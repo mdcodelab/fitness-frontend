@@ -30,8 +30,21 @@ export function AuthProvider({ children }) {
     fetchUser();
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        "http://localhost:4000/api-gateway/logout",
+        {},
+        { withCredentials: true }
+      );
+
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser, loading }}>
+    <AuthContext.Provider value={{ user, setUser, loading, handleLogout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './routes/ProtectedRoute';
+import PastActivities from './pages/PastActivities';
 import { AuthProvider } from './context';
 
 function App() {
@@ -27,6 +28,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+
+       <Route path="/dashboard/past-activities"
+        element={
+          <ProtectedRoute>
+            <PastActivities />
           </ProtectedRoute>
         }
       />

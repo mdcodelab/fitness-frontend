@@ -5,6 +5,7 @@ import ActivityCard from "../components/ActivityCard";
 import "./Dashboard.css";
 import axios from "axios";
 import { useUser } from "../context";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const [availableActivities, setAvailableActivities] = useState([]);
@@ -12,7 +13,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const[firstName, setFirstName] = useState("");
-  const { user } = useUser();
+  const { user, handleLogout } = useUser();
   console.log(user);
 
   const navigate = useNavigate();
@@ -28,12 +29,6 @@ function Dashboard() {
           { withCredentials: true }
         );
         setAvailableActivities(availableRes.data);
-
-        const userRes = await axios.get(
-          "http://localhost:4000/api-gateway/activities", 
-          { withCredentials: true }
-        );
-        setUserActivities(userRes.data);
 
       } catch (err) {
         console.error("Fetch error:", err.response?.data || err);
@@ -52,19 +47,6 @@ function Dashboard() {
 
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      await axios.post(
-        "http://localhost:4000/api-gateway/logout",
-        {},
-        { withCredentials: true }
-      );
-
-      navigate("/"); // redirect la homepage
-    } catch (err) {
-      console.error("Logout failed:", err);
-    }
-  };
 
   return (
     <section className="dashboard">
@@ -75,7 +57,7 @@ function Dashboard() {
         </div>
         <div className="buttons">
           <h2>Hello, {user}!</h2>
-            <button className="btn">Past activities</button>
+          <Link className="btn past-btn" to="/dashboard/past-activities">Past Activities</Link>
           <button className="btn" onClick={handleLogout}>
             Logout
           </button>
@@ -87,7 +69,9 @@ function Dashboard() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="dashboard-main">
+        
+        <>
+          <div className="dashboard-main">
           <section className="available-activities">
             <h2>Available Activities</h2>
             <div className="activity-grid">
@@ -99,6 +83,7 @@ function Dashboard() {
 
           <section className="user-activities">
             <h2>Your Activities</h2>
+            <p>Choose an activity and see AI recommendations.</p>
             <div className="activity-grid">
               {userActivities.map((act) => (
                 <ActivityCard key={act.id} activity={act} completed />
@@ -106,6 +91,7 @@ function Dashboard() {
             </div>
           </section>
         </div>
+        </>
       )}
     </section>
   );
