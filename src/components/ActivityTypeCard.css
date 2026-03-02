@@ -1,53 +1,31 @@
-.activity-card {
-  background: white;
-  border-radius: 12px;
+.activity-type-card {
+  background: #fff;
+  border-radius: 4px;
   padding: 1.2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
   transition: 0.2s ease;
 }
 
-.activity-card:hover {
-  transform: translateY(-3px);
+.activity-type-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
-.activity-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.activity-type-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
 }
 
-.activity-type {
-  background: #f3f4f6;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+.activity-type-card p {
+  font-size: 1rem;
+  color: black;
+  text-align: center;
 }
 
-.activity-body {
-  margin-top: 1rem;
-  line-height: 1.6;
-}
-
-.activity-footer {
-  margin-top: 1rem;
-  display: flex;
-  gap: 10px;
-}
-
-.btn-view {
-  background: #4f46e5;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.btn-delete {
-  background: #ef4444;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}

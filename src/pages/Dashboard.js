@@ -46,6 +46,12 @@ function Dashboard() {
     fetchData();
   }, []);
 
+
+  useEffect(() => {
+
+
+  }, []);
+
   const handleLogout = async () => {
     try {
       await axios.post(
@@ -68,7 +74,8 @@ function Dashboard() {
           <h2>Pulse</h2>
         </div>
         <div className="buttons">
-          <h2>Hello, {user?.first_name || "Guest"}!</h2>
+          <h2>Hello, {user}!</h2>
+            <button className="btn">Past activities</button>
           <button className="btn" onClick={handleLogout}>
             Logout
           </button>

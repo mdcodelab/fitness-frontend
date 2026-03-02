@@ -3,22 +3,18 @@ import "./ActivityTypeCard.css";
 
 function ActivityTypeCard({ activity }) {
   return (
-    <div className="activity-card">
-      <div className="activity-header">
-        <h3>{activity.name}</h3>
-        <span className="activity-type">{activity.type}</span>
-      </div>
+    <div className="activity-type-card">
+      <h1 className="activity-type-icon">
+        {activity.icon}
+      </h1>
 
-      <div className="activity-body">
-        <p><strong>Duration:</strong> {activity.duration} min</p>
-        <p><strong>Calories:</strong> {activity.calories} kcal</p>
-        <p><strong>Date:</strong> {new Date(activity.date).toLocaleDateString()}</p>
-      </div>
+      <h1 className="activity-type-name">
+        {activity.name.replaceAll("_", " ")}
+      </h1>
 
-      <div className="activity-footer">
-        <button className="btn-view">View</button>
-        <button className="btn-delete">Delete</button>
-      </div>
+      <p className="activity-type-description">
+        {activity.description}
+      </p>
     </div>
   );
 }

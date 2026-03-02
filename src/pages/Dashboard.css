@@ -37,6 +37,37 @@
 
 .buttons h2 {
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
+
+.dashboard-main {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border: 2px solid red;
+}
+
+.available-activities {
+    flex: 1;
+}
+
+.available-activities h2, .user-activities h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.available-activities .activity-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.user-activities {
+    flex: 1;
+    border: 2px solid blue;
+}
+
+
+
+
 

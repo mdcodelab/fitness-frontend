@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
         );
 
         if (res.data && res.data.first_name) {
-          setUser(res.data);
+          setUser(res.data.first_name);
         } else {
           setUser(null);
         }

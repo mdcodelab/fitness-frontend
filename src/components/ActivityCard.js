@@ -1,5 +1,5 @@
 import React from "react";
-import "./ActivityCard.css";
+
 
 function ActivityCard({ activity }) {
   return (
