@@ -18,7 +18,7 @@ function Dashboard() {
 
   const navigate = useNavigate();
 
-
+  //all activities
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,11 +41,40 @@ function Dashboard() {
     fetchData();
   }, []);
 
+  //choose activity to add
+  const handleAddActivity = async (activity) => {
+  try {
+    await axios.post(
+      "http://localhost:4000/api-gateway/activities",
+      {
+        typeId: activity.id,   // enum din seed: RUNNING, YOGA etc.
+        duration: 30,
+        calories: 200,
+        date: new Date()
+      },
+      { withCredentials: true }
+    );
 
-  useEffect(() => {
+    // re-fetch user activities
+    const userRes = await axios.get(
+      "http://localhost:4000/api-gateway/user-activities",
+      { withCredentials: true }
+    );
 
+    setUserActivities(userRes.data);
 
-  }, []);
+  } catch (err) {
+    console.error("Add activity error:", err.response?.data || err);
+  }
+};
+
+console.log(userActivities);
+
+//logout
+const logout = ()=> {
+  handleLogout();
+  navigate("/");
+}
 
 
   return (
@@ -58,7 +87,7 @@ function Dashboard() {
         <div className="buttons">
           <h2>Hello, {user}!</h2>
           <Link className="btn past-btn" to="/dashboard/past-activities">Past Activities</Link>
-          <button className="btn" onClick={handleLogout}>
+          <button className="btn" onClick={logout}>
             Logout
           </button>
         </div>
@@ -72,24 +101,33 @@ function Dashboard() {
         
         <>
           <div className="dashboard-main">
-          <section className="available-activities">
+          <div className="available-activities">
             <h2>Available Activities</h2>
+            <p>Choose an activity to get started.</p>
             <div className="activity-grid">
-              {availableActivities.map((act) => (
-                <ActivityTypeCard key={act.id} activity={act} />
-              ))}
-            </div>
-          </section>
+                  {availableActivities.map((act) => (
+                     <div key={act.id} onClick={() => handleAddActivity(act)}>
+                      <ActivityTypeCard activity={act} />
+                   </div>
+                  ))}
+              </div>
+          </div>
 
-          <section className="user-activities">
-            <h2>Your Activities</h2>
+          <div className="user-activities">
+            <h2>Your Activities for today</h2>
             <p>Choose an activity and see AI recommendations.</p>
-            <div className="activity-grid">
-              {userActivities.map((act) => (
-                <ActivityCard key={act.id} activity={act} completed />
-              ))}
+            <div className="user-activity-grid">
+                  {userActivities.length === 0 ? (
+                    <p style={{ textAlign: "center", marginTop: "10rem",
+                     fontSize: "0.8rem", color: "var(--red-color)" }}>
+                     No activities added yet. Click on an activity above to add one!</p>
+                  ) : (
+                    userActivities.map((act) => (
+                      <ActivityCard key={act.id} activity={act} />
+                    ))
+                  )}
             </div>
-          </section>
+          </div>
         </div>
         </>
       )}

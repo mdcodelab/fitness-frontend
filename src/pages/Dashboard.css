@@ -58,7 +58,17 @@ header {
 .available-activities .activity-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    
+}
+
+.available-activities p {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 1rem;
 }
 
 .user-activities {

@@ -14,6 +14,7 @@
 html, body {
   margin: 0;
   padding: 0;
+   box-sizing: border-box;
 }
 
 a {
@@ -22,7 +23,6 @@ a {
 
 .btn {
   display: inline-block;
-  width: max-content;
   padding: 0.5rem 1rem;
   background-color: var(--red-color);
   color: white;
@@ -48,7 +48,7 @@ a {
 
 section {
   padding: 1rem;
-  max-width: 1250px;
+  width: 100%;
   margin: 0 auto;
 }
 
