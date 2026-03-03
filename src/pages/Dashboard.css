@@ -8,7 +8,7 @@ header {
     align-items: center;
     padding: 0 1rem;
     height: 4rem;
-    border-bottom: 2px solid #fff;
+    border-bottom: 1px double #fff;
 }
 
 .logo {
@@ -56,7 +56,7 @@ header {
     margin-top: 2rem;
 }
 
-.available-activities .activity-grid {
+.available-activities .activity-grid, .user-activities .activity-grid {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -65,7 +65,7 @@ header {
     
 }
 
-.available-activities p {
+.available-activities p, .user-activities p {
     text-align: center;
     color: #fff;
     margin-bottom: 2rem;
@@ -74,13 +74,43 @@ header {
 
 .user-activities {
     flex: 1;
-    border: 2px solid blue;
 }
 
-.user-activities p {
-    text-align: center;
-    color: #fff;
+.user-activity-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
+
+@media(max-width: 722px) {
+    .dashboard-main {
+        flex-direction: column;
+    }
+    header {
+        flex-direction: column;
+        height: 100%;
+        padding: 1rem 0; 
+        gap: 0.5rem;
+        
+    }
+}
+
+@media(max-width: 388px) {
+    .buttons {
+        flex-direction: column;
+    }
+    header {
+        height: 100%;
+    }
+}
+
+
+
+
+
+
 
 
 

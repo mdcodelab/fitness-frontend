@@ -24,7 +24,8 @@ function Login() {
       );
 
       console.log("Login successful:", response.data);
-
+      setEmail("");
+      setPassword("");
       // dacă login-ul e ok, navigăm către dashboard
       navigate("/dashboard");
     } catch (err) {

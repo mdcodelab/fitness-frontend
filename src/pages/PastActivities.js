@@ -26,7 +26,7 @@ function PastActivities() {
   ========================== */
   useEffect(() => {
     if (!user) return;
-
+    setActivitiesLoading(true);
     const fetchActivities = async () => {
       try {
         setActivitiesLoading(true);
@@ -37,6 +37,7 @@ function PastActivities() {
         );
 
         setUserActivities(res.data);
+        setActivitiesLoading(false);
       } catch (err) {
         console.error(
           "Fetch activities error:",

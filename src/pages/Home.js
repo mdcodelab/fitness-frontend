@@ -40,18 +40,30 @@ function Home() {
                 </div>
 
                 <div className="content">
-                    <h1>Welcome to Pulse</h1>
-                    <p>
-                        Discover the power of fitness with Pulse, your ultimate workout companion.
-                        Whether you're a beginner or a seasoned athlete, our app offers personalized
-                        workout plans, real-time tracking, and expert guidance to help you achieve
-                        your fitness goals. Join our community and start your fitness journey today!
-                    </p>
+                    <div className="content-nessage">
+                        <h1>Welcome to Pulse</h1>
+                        <p>
+                            Discover the power of fitness with Pulse, your ultimate workout companion.
+                            Whether you're a beginner or a seasoned athlete, our app offers personalized
+                            workout plans, real-time tracking, and expert guidance to help you achieve
+                            your fitness goals. Join our community and start your fitness journey today!
+                        </p>
 
-                    <Link to="/login" className="btn start">
-                        Get Started <FaArrowsTurnRight />
-                    </Link>
+                        <Link to="/login" className="btn start">
+                            Get Started <FaArrowsTurnRight />
+                        </Link>
+                    </div>
+                    <div className="animated">
+                    <div>Hiking</div>
+                    <div>Jump Rope</div>
+                    <diiv>swimming</diiv>
+                    <div>Yoga</div>
+                    <div>Cycling</div>
+                    <div>...and Much More!</div>
+                    <div>AI Responses</div>
                 </div>
+                </div>
+
             </div>
         </section>
     );

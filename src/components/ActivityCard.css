@@ -1,9 +1,9 @@
 .activity-card {
   background: #fff;
   border-radius: 4px;
-  padding: 20px;
+  padding: 1.2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  width: 16rem;
+  width: 15rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
 
 .activity-card p {
   font-size: 1rem;
-  color: black;
+  color: black !important;
 }
 
 .icon {
