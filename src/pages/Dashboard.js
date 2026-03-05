@@ -51,7 +51,6 @@ function Dashboard() {
      ADD ACTIVITY
   ========================== */
   useEffect(() => {
-  if (!user) return;
   setUserLoading(true);
 
   const fetchUserActivities = async () => {

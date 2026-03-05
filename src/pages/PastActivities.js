@@ -25,7 +25,6 @@ function PastActivities() {
      FETCH ACTIVITIES
   ========================== */
   useEffect(() => {
-    if (!user) return;
     setActivitiesLoading(true);
     const fetchActivities = async () => {
       try {
@@ -56,7 +55,6 @@ function PastActivities() {
      FETCH RECOMMENDATIONS
   ========================== */
   useEffect(() => {
-    if (!user) return;
     setRecoLoading(true);
 
     const fetchReco = async () => {

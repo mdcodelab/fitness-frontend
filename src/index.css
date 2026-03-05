@@ -44,6 +44,18 @@ a {
 
 .start {
   width: max-content;
+  transform: translateY(100%);
+  animation-delay: 1s;
+  animation: show 1s ease-out forwards;
+}
+
+@keyframes show {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 section {

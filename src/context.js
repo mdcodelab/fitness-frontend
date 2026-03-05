@@ -9,6 +9,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const fetchUser = async () => {
+      setLoading(true);
       try {
         const res = await axios.get(
           "http://localhost:4000/api-gateway/me",
@@ -20,6 +21,7 @@ export function AuthProvider({ children }) {
         } else {
           setUser(null);
         }
+        setLoading(false);
       } catch {
         setUser(null);
       } finally {
@@ -28,7 +30,7 @@ export function AuthProvider({ children }) {
     };
 
     fetchUser();
-  }, []);
+  }, [user]);
 
   const handleLogout = async () => {
     try {
